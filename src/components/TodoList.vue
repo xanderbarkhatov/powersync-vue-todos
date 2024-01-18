@@ -25,8 +25,6 @@ watchOnce(todos, () => {
       <div class="flex items-center justify-center">
         <VoidSVG width="50%" />
       </div>
-
-      <p class="mt-4 text-center text-muted-foreground">Nothing to do here</p>
     </div>
 
     <ul v-else v-auto-animate="{ duration: 100 }" class="space-y-1 px-1">
