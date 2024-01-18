@@ -8,6 +8,9 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+      },
       registerType: "autoUpdate",
       manifest: {
         name: "PowerSync Vue Demo",
