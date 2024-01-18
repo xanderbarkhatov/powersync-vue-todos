@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { GithubLogoIcon } from "@radix-icons/vue";
 import { AvatarIcon } from "@radix-icons/vue";
 import { useRouter } from "vue-router";
 
@@ -25,6 +26,15 @@ const handleLogout = async () => {
 
 <template>
   <header class="sticky top-0 z-30 flex h-20 items-center bg-background">
+    <div>
+      <a
+        href="https://github.com/xanderbarkhatov/powersync-vue-todos"
+        title="Source"
+      >
+        <GithubLogoIcon class="h-5 w-5" />
+      </a>
+    </div>
+
     <div class="ml-auto">
       <DropdownMenu v-if="user">
         <DropdownMenuTrigger>
