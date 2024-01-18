@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
     VitePWA({
       workbox: {
-        globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+        globPatterns: ["**/*.{js,css,html,png,svg,ico,wasm}"],
       },
       registerType: "autoUpdate",
       manifest: {
@@ -51,17 +51,20 @@ export default defineConfig({
       },
     }),
   ],
-  optimizeDeps: {
-    exclude: ["@journeyapps/powersync-sdk-web"],
-    include: [
-      "object-hash",
-      "uuid",
-      "event-iterator",
-      "js-logger",
-      "lodash",
-      "can-ndjson-stream",
-    ],
-  },
+  optimizeDeps:
+    process.env.NODE_ENV === "production"
+      ? undefined
+      : {
+          exclude: ["@journeyapps/powersync-sdk-web"],
+          include: [
+            "object-hash",
+            "uuid",
+            "event-iterator",
+            "js-logger",
+            "lodash",
+            "can-ndjson-stream",
+          ],
+        },
   resolve: {
     alias: {
       "@/": fileURLToPath(new URL("./src/", import.meta.url)),
